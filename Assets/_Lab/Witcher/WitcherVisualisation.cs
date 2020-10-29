@@ -17,10 +17,10 @@ public class WitcherVisualisation : MonoBehaviour {
     }
 
     public float BarX {
-        get => bar.anchoredPosition.x;
+        get => bar.anchoredPosition.x + CanvasWidth / 2;
         set {
             var pos = bar.anchoredPosition;
-            pos.x = value;
+            pos.x = value - CanvasWidth/2;
             bar.anchoredPosition = pos;
         }
     }
@@ -31,14 +31,14 @@ public class WitcherVisualisation : MonoBehaviour {
         }
         set {
             var localScale = bar.localScale;
-            localScale.x = Mathf.Clamp(value , MIN_BAR_WIDTH, DEFAULT_BAR_WIDTH) / DEFAULT_BAR_WIDTH;
+            localScale.x = Mathf.Clamp(value, MIN_BAR_WIDTH, DEFAULT_BAR_WIDTH) / DEFAULT_BAR_WIDTH;
             bar.localScale = localScale;
         }
     }
 
     public float PointX {
-        get => point.anchoredPosition.x;
-        set => point.anchoredPosition = new Vector2(value, point.anchoredPosition.y);
+        get => point.anchoredPosition.x + CanvasWidth / 2;
+        set => point.anchoredPosition = new Vector2(value - CanvasWidth/2, point.anchoredPosition.y);
     }
 
 

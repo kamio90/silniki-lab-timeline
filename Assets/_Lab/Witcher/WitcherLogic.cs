@@ -5,9 +5,21 @@ public class WitcherLogic : MonoBehaviour {
     public bool reduceBarPermanently = false;
     public float barReductionPerSecond = 5;
 
+    float lastMouseX;
+
+    [SerializeField] float mouseDeltaMultiplier = -2;
+
+    void Awake() {
+        lastMouseX = ui.MouseX;
+    }
 
     void Update() {
-        ui.PointX = ui.MouseX;
+        var mouseXdelta = lastMouseX - ui.MouseX;
+
+        ui.PointX = ui.MouseX + Random.Range(-1, 2) * mouseXdelta * mouseDeltaMultiplier;
+
+        lastMouseX = ui.MouseX;
+
         if (IsMouseOverBar())
             ui.BarX++;
         else
